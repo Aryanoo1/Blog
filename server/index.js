@@ -38,12 +38,6 @@ app.use(
   })
 );
 
-const storage = new Storage({
-  keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS,
-});
-
-const bucket = storage.bucket(process.env.GCS_BUCKET_NAME);
-
 app.use("/api", router);
 
 db().then(() => {
@@ -52,4 +46,4 @@ db().then(() => {
   });
 });
 
-export default bucket;
+export default app;

@@ -1,6 +1,11 @@
 import UserModel from "../models/UserModel.js";
 import bcryptjs from "bcryptjs";
-import bucket from "../index.js";
+
+const storage = new Storage({
+  keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS,
+});
+
+const bucket = storage.bucket(process.env.GCS_BUCKET_NAME);
 
 async function uploadImage(file) {
   if (!file) return null;

@@ -1,5 +1,10 @@
 import UserModel from "../models/UserModel.js";
-import bucket from "../index.js";
+
+const storage = new Storage({
+  keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS,
+});
+
+const bucket = storage.bucket(process.env.GCS_BUCKET_NAME);
 
 export const getUserDetails = async (req, res) => {
   const { username } = req.query;
