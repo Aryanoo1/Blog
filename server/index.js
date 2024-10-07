@@ -7,7 +7,6 @@ import MongoStore from "connect-mongo";
 import UserModel from "./models/UserModel.js";
 import BlogModel from "./models/BlogModel.js";
 import router from "./routes/index.js";
-import { Storage } from "@google-cloud/storage";
 
 const app = express();
 dotenv.config();

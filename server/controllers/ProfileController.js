@@ -1,4 +1,5 @@
 import UserModel from "../models/UserModel.js";
+import { Storage } from "@google-cloud/storage";
 
 const storage = new Storage({
   keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS,
