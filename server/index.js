@@ -38,6 +38,11 @@ app.use(
 );
 
 app.use("/api", router);
+app.get('/',(request,response)=>{
+  response.json({
+      message : "Server running at " + PORT
+  })
+})
 
 db().then(() => {
   app.listen(8080, () => {
