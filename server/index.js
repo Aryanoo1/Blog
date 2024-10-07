@@ -15,7 +15,7 @@ dotenv.config();
 app.use(express.json());
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL,
+    origin: "https://blog-client-mu-amber.vercel.app",
     credentials: true,
     methods: ["GET", "POST", "DELETE"],
     allowedHeaders: ["Content-Type"],
