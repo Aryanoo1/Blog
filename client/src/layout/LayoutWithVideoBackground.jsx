@@ -1,6 +1,6 @@
 import React from "react";
 import SideBar from "../components/SideBar";
-import Search from "../components/search";
+import Search from "../components/Search";
 
 const LayoutWithVideoBackground = ({
   children,
