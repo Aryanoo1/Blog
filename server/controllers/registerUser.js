@@ -21,6 +21,7 @@ async function uploadImage(file) {
     });
 
     blobStream.on("finish", async () => {
+      console.log("bucket name from env file: ",process.env.GCS_BUCKET_NAME)
       const publicUrl = `https://storage.googleapis.com/${process.env.GCS_BUCKET_NAME}/${fileName}`;
       resolve(publicUrl);
     });
