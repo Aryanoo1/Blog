@@ -31,7 +31,6 @@ async function uploadImage(file) {
 
 async function registerUser(req, res) {
   try {
-    console.log("i am here")
     const { name, email, password, userName, bio } = req.body;
 
     const checkEmail = await UserModel.findOne({ email });
@@ -47,6 +46,7 @@ async function registerUser(req, res) {
 
     let profileImageUrl = null;
     if (req.file) {
+      console.log("i am here")
       profileImageUrl = await uploadImage(req.file);
     }
 
