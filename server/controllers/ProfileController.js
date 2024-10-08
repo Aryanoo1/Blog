@@ -1,5 +1,5 @@
 import UserModel from "../models/UserModel.js";
-import { bucket } from "../routes/index.js";
+import { bucket } from "../config/helper.js";
 import dotenv from "dotenv";
 dotenv.config();
 
