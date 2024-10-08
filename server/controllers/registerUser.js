@@ -17,16 +17,27 @@ async function uploadImage(file) {
     });
     console.log("2 step");
     blobStream.on("error", (err) => {
+      console.error("Error in blobStream:", err);
       reject(err);
     });
-    console.log("2 step");
+
     blobStream.on("finish", async () => {
-      console.log("bucket name from env file: ", process.env.GCS_BUCKET_NAME);
-      const publicUrl = `https://storage.googleapis.com/${process.env.GCS_BUCKET_NAME}/${fileName}`;
-      resolve(publicUrl);
+      try {
+        console.log("bucket name from env file: ", process.env.GCS_BUCKET_NAME);
+        const publicUrl = `https://storage.googleapis.com/${process.env.GCS_BUCKET_NAME}/${fileName}`;
+        resolve(publicUrl);
+      } catch (error) {
+        console.error("Error generating public URL:", error);
+        reject(error);
+      }
     });
 
-    blobStream.end(file.buffer);
+    try {
+      blobStream.end(file.buffer);
+    } catch (error) {
+      console.error("Error ending blob stream:", error);
+      reject(error);
+    }
   });
 }
 
