@@ -55,7 +55,7 @@ app.use(
 app.use("/api", router);
 app.get("/", (request, response) => {
   response.json({
-    message: "Server running at " + PORT,
+    message: "Server running at " + process.env.PORT,
   });
 });
 
