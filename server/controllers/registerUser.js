@@ -1,6 +1,8 @@
 import UserModel from "../models/UserModel.js";
 import bcryptjs from "bcryptjs";
 import { bucket } from "../routes/index.js";
+import dotenv from "dotenv";
+dotenv.config();
 
 async function uploadImage(file) {
   if (!file) return null;
@@ -29,6 +31,7 @@ async function uploadImage(file) {
 
 async function registerUser(req, res) {
   try {
+    console.log("i am here")
     const { name, email, password, userName, bio } = req.body;
 
     const checkEmail = await UserModel.findOne({ email });

@@ -1,5 +1,7 @@
 import BlogModel from "../models/BlogModel.js";
 import { bucket } from "../routes/index.js";
+import dotenv from "dotenv";
+dotenv.config();
 
 async function uploadFileToGCS(file) {
   return new Promise((resolve, reject) => {

@@ -1,5 +1,7 @@
 import UserModel from "../models/UserModel.js";
 import { bucket } from "../routes/index.js";
+import dotenv from "dotenv";
+dotenv.config();
 
 export const getUserDetails = async (req, res) => {
   const { username } = req.query;
