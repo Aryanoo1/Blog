@@ -1,14 +1,6 @@
 import UserModel from "../models/UserModel.js";
 import bcryptjs from "bcryptjs";
-import { Storage } from "@google-cloud/storage";
-import dotenv from "dotenv";
-dotenv.config();
-
-const storage = new Storage({
-  keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS,
-});
-
-const bucket = storage.bucket(process.env.GCS_BUCKET_NAME);
+import { bucket } from "../routes/index.js";
 
 async function uploadImage(file) {
   if (!file) return null;

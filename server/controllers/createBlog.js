@@ -1,13 +1,5 @@
 import BlogModel from "../models/BlogModel.js";
-import { Storage } from "@google-cloud/storage";
-import dotenv from "dotenv";
-dotenv.config();
-
-const storage = new Storage({
-  keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS,
-});
-
-const bucket = storage.bucket(process.env.GCS_BUCKET_NAME);
+import { bucket } from "../routes/index.js";
 
 async function uploadFileToGCS(file) {
   return new Promise((resolve, reject) => {

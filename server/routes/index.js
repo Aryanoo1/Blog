@@ -32,6 +32,15 @@ import multer from "multer";
 import { updateBio } from "../controllers/updateBio.js";
 import { getComments } from "../controllers/getComments.js";
 import { removeComment } from "../controllers/removeComment.js";
+import { Storage } from "@google-cloud/storage";
+import dotenv from "dotenv";
+dotenv.config();
+
+const storage = new Storage({
+  keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS,
+});
+
+export const bucket = storage.bucket(process.env.GCS_BUCKET_NAME);
 
 const upload = multer({
   storage: multer.memoryStorage(),
