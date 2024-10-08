@@ -31,7 +31,7 @@ const LayoutWithVideoBackground = ({
           zIndex: -1,
         }}
       >
-        <source src="/src/assets/northern-lights.mp4" type="video/mp4" />
+        <source src="/northern-lights.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
