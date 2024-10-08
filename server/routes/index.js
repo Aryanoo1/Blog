@@ -37,7 +37,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const storage = new Storage({
-  keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS,
+  keyFilename: JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON),
 });
 
 export const bucket = storage.bucket(process.env.GCS_BUCKET_NAME);
