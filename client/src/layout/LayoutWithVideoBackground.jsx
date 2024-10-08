@@ -52,10 +52,11 @@ const LayoutWithVideoBackground = ({
         <div
           style={{
             flexGrow: 1,
-            marginLeft: "200px",
+            marginLeft: "auto",
             display: "flex",
             flexDirection: "column",
             height: "100%",
+            zIndex: "0"
           }}
         >
           <div

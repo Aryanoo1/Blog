@@ -8,6 +8,7 @@ const Liked = () => {
   const [likedBlogs, setLikedBlogs] = useState([]);
   const [isPlaying, setIsPlaying] = useState(false);
   const [thumbnail, setThumbnail] = useState(null);
+  const [loading, setLoading] = useState(true);
   const videoRef = useRef(null);
   const userId = Cookies.get("sessionUserId");
 
@@ -46,6 +47,7 @@ const Liked = () => {
   };
 
   const fetchLikedBlogs = async () => {
+    setLoading(true)
     try {
       const apiUrl = import.meta.env.VITE_API_URL;
       const url = `${apiUrl}/api/getLikedBlogs`;
@@ -58,6 +60,8 @@ const Liked = () => {
       }
     } catch (error) {
       console.error("Error fetching liked blogs:", error.message);
+    }finally {
+      setLoading(false);
     }
   };
 
@@ -78,6 +82,8 @@ const Liked = () => {
       console.error("Error unliking blog:", error.message);
     }
   };
+
+  if (loading) return <div>Loading...</div>;
 
   if (likedBlogs.length === 0) {
     return <h1 className="text-white">No Liked Blogs Found</h1>;

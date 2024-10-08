@@ -184,12 +184,12 @@ const BlogCard = ({
     try {
       const apiUrl = import.meta.env.VITE_API_URL;
       const url = `${apiUrl}/api/getComments/${blog._id}`;
-
+  
       const response = await axios.get(url);
       if (response.data.success) {
         console.log("comments:", response.data.comments);
         setComments(response.data.comments);
-        setCommentCount(comments.length);
+        setCommentCount(response.data.comments.length);
       } else {
         console.error(response.data.message);
       }
@@ -197,6 +197,7 @@ const BlogCard = ({
       console.error("Error fetching comments:", error.message);
     }
   };
+  
 
   const handleAddComment = async () => {
     if (!newComment.trim()) return;
