@@ -12,7 +12,7 @@ async function uploadImage(file) {
   console.log("1 step");
   return new Promise((resolve, reject) => {
     const blobStream = blob.createWriteStream({
-      resumable: false,
+      resumable: true,
       contentType: file.mimetype,
     });
     console.log("2 step");
