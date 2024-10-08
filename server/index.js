@@ -26,10 +26,15 @@ app.use(
   cors({
     origin: "https://blog-client-mu-amber.vercel.app",
     credentials: true,
-    methods: ["GET", "POST", "DELETE"],
-    allowedHeaders: ["Content-Type"],
+    methods: ["GET", "POST", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
   })
 );
+
+app.options("*", cors());
+
 app.use(
   session({
     secret: "keyboard cat",
