@@ -2,10 +2,8 @@ import BlogModel from "../models/BlogModel.js";
 
 export const addComment = async (req, res) => {
   try {
-    console.log("hello");
     const { blogId, userName, comment } = req.body;
 
-    console.log("blogId to add comments: ", blogId);
     const blog = await BlogModel.findById(blogId);
     if (!blog) {
       return res

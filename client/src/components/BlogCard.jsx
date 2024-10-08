@@ -187,7 +187,6 @@ const BlogCard = ({
   
       const response = await axios.get(url);
       if (response.data.success) {
-        console.log("comments:", response.data.comments);
         setComments(response.data.comments);
         setCommentCount(response.data.comments.length);
       } else {

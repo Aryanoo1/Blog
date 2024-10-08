@@ -13,7 +13,6 @@ const Search = ({ setFilteredUsers, setSelectedTab }) => {
       setSelectedTab("Search");
       const apiUrl = import.meta.env.VITE_API_URL;
       const url = `${apiUrl}/api/users/search`;
-      console.log(searchTerm);
       const response = await axios.get(url, {
         params: { searchTerm },
       });

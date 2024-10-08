@@ -4,10 +4,8 @@ import BlogModel from "../models/BlogModel.js";
 export const getSaved = async (req, res) => {
   try {
     const { userName } = req.query;
-    console.log("userName: ", userName)
 
     const user = await UserModel.findOne({ userName }).populate("saved");
-    console.log("user: ", user);
     
     if (!user) {
       return res

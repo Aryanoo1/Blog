@@ -112,7 +112,6 @@ const Profile = ({ profileUserName }) => {
       });
 
       if (res.data.success) {
-        console.log("Profile image uploaded successfully.");
         fetchUserDetails();
       } else {
         console.error("Failed to upload profile image.");
@@ -135,7 +134,6 @@ const Profile = ({ profileUserName }) => {
       const res = await axios.post(url, data, { withCredentials: true });
 
       if (res.data.success) {
-        console.log("Bio updated successfully.");
         setIsEditingBio(false);
         fetchUserDetails();
       } else {

@@ -19,7 +19,6 @@ const UserProfiles = ({ username }) => {
             username,
           },
         });
-        console.log("blogResponse data: ", blogResponse.data.data);
         setUserBlogList(blogResponse.data.data);
       } catch (error) {
         console.error("Error fetching user data:", error);

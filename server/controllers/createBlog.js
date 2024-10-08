@@ -37,8 +37,6 @@ async function createBlog(req, res) {
       mediaUrl = await uploadFileToGCS(req.file);
     }
 
-    console.log("links : ", linksArray);
-
     const payload = {
       author,
       title,

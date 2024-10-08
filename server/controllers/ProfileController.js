@@ -57,8 +57,6 @@ export const updateProfileImage = async (req, res) => {
   const { username } = req.query;
   const { file } = req;
 
-  console.log("user reached to change profile in backend: ", username);
-
   if (!file) {
     return res
       .status(400)

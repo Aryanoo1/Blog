@@ -36,8 +36,6 @@ const CreateBlog = ({ setSelectedTab }) => {
       .map((link) => link.trim())
       .filter((link) => link !== "");
 
-    console.log("links: ", links);
-
     try {
       const payload = new FormData();
       payload.append("author", username);
@@ -47,7 +45,6 @@ const CreateBlog = ({ setSelectedTab }) => {
       if (mediaFile) {
         payload.append("media", mediaFile);
       }
-      console.log("payload.links : ", payload);
       const apiUrl = import.meta.env.VITE_API_URL;
       const url = `${apiUrl}/api/create`;
       await axios.post(url, payload, {

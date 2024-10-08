@@ -9,13 +9,11 @@ async function uploadImage(file) {
 
   const fileName = `profile-images/${file.originalname}-${Date.now()}`;
   const blob = bucket.file(fileName);
-  console.log("1 step");
   return new Promise((resolve, reject) => {
     const blobStream = blob.createWriteStream({
       resumable: true,
       contentType: file.mimetype,
     });
-    console.log("2 step");
     blobStream.on("error", (err) => {
       console.error("Error in blobStream:", err);
       reject(err);
@@ -23,7 +21,6 @@ async function uploadImage(file) {
 
     blobStream.on("finish", async () => {
       try {
-        console.log("bucket name from env file: ", process.env.GCS_BUCKET_NAME);
         const publicUrl = `https://storage.googleapis.com/${process.env.GCS_BUCKET_NAME}/${fileName}`;
         resolve(publicUrl);
       } catch (error) {
@@ -58,7 +55,6 @@ async function registerUser(req, res) {
 
     let profileImageUrl = null;
     if (req.file) {
-      console.log("i am here");
       profileImageUrl = await uploadImage(req.file);
     }
 

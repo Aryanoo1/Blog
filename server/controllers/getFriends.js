@@ -4,8 +4,6 @@ export const getFriends = async (req, res) => {
   try {
     const { userName } = req.query;
     const user = await UserModel.findOne({ userName });
-
-    console.log("user: ", user);
     
     if (!user) {
       return res

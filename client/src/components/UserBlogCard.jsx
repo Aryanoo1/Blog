@@ -180,7 +180,6 @@ const UserBlogCard = ({ blog, profileUserName }) => {
 
       const response = await axios.get(url);
       if (response.data.success) {
-        console.log("comments:", response.data.comments);
         setComments(response.data.comments);
         setCommentCount(comments.length);
       } else {
