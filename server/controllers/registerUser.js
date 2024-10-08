@@ -15,11 +15,11 @@ async function uploadImage(file) {
       resumable: false,
       contentType: file.mimetype,
     });
-
+    console.log("2 step");
     blobStream.on("error", (err) => {
       reject(err);
     });
-
+    console.log("2 step");
     blobStream.on("finish", async () => {
       console.log("bucket name from env file: ", process.env.GCS_BUCKET_NAME);
       const publicUrl = `https://storage.googleapis.com/${process.env.GCS_BUCKET_NAME}/${fileName}`;
