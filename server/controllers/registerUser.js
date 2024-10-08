@@ -1,6 +1,6 @@
 import UserModel from "../models/UserModel.js";
 import bcryptjs from "bcryptjs";
-import { bucket } from "../config/helper.js";
+import { bucket } from "../routes/index.js";
 import dotenv from "dotenv";
 dotenv.config();
 
