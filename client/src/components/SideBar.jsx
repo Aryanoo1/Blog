@@ -1,11 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Cookies from "js-cookie";
 import blogLogo from "../assets/blogLogo.png";
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai"; // Icons for the arrows
 
-const SideBar = ({ selectedTab, setSelectedTab }) => {
-  const [isCollapsed, setIsCollapsed] = useState(true);
-
+const SideBar = ({
+  selectedTab,
+  setSelectedTab,
+  isCollapsed,
+  setIsCollapsed,
+}) => {
   useEffect(() => {
     if (window.bootstrap) {
       const tooltipTriggerList = Array.from(
@@ -82,9 +85,6 @@ const SideBar = ({ selectedTab, setSelectedTab }) => {
                   selectedTab === "Home" && "active"
                 }`}
               >
-                <svg className="bi pe-none me-2" width="16" height="16">
-                  <use xlinkHref="#home"></use>
-                </svg>
                 Home
               </a>
             </li>
@@ -95,9 +95,6 @@ const SideBar = ({ selectedTab, setSelectedTab }) => {
                   selectedTab === "Saved" && "active"
                 }`}
               >
-                <svg className="bi pe-none me-2" width="16" height="16">
-                  <use xlinkHref="#speedometer2"></use>
-                </svg>
                 Saved
               </a>
             </li>
@@ -108,9 +105,6 @@ const SideBar = ({ selectedTab, setSelectedTab }) => {
                   selectedTab === "Liked" && "active"
                 }`}
               >
-                <svg className="bi pe-none me-2" width="16" height="16">
-                  <use xlinkHref="#table"></use>
-                </svg>
                 Liked
               </a>
             </li>
@@ -121,9 +115,6 @@ const SideBar = ({ selectedTab, setSelectedTab }) => {
                   selectedTab === "Comments" && "active"
                 }`}
               >
-                <svg className="bi pe-none me-2" width="16" height="16">
-                  <use xlinkHref="#grid"></use>
-                </svg>
                 Comments
               </a>
             </li>
@@ -134,9 +125,6 @@ const SideBar = ({ selectedTab, setSelectedTab }) => {
                   selectedTab === "Friends" && "active"
                 }`}
               >
-                <svg className="bi pe-none me-2" width="16" height="16">
-                  <use xlinkHref="#people-circle"></use>
-                </svg>
                 Friends
               </a>
             </li>
@@ -158,9 +146,7 @@ const SideBar = ({ selectedTab, setSelectedTab }) => {
           className="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle"
           data-bs-toggle="dropdown"
           aria-expanded="false"
-          onClick={() => {
-            setIsCollapsed(false);
-          }}
+          onClick={() => setIsCollapsed(false)}
         >
           <img
             src={

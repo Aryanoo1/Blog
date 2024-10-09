@@ -4,10 +4,12 @@ import dotenv from "dotenv";
 dotenv.config();
 
 async function uploadFileToGCS(file) {
+  const fileName = `blog_media/-${Date.now()}-${file.originalname}`;
+  const blob = bucket.file(fileName);
   return new Promise((resolve, reject) => {
-    const blob = bucket.file(`blog_media/-${Date.now()}-${file.originalname}`);
     const blobStream = blob.createWriteStream({
       metadata: {
+        resumable: true,
         contentType: file.mimetype,
       },
     });
@@ -17,12 +19,22 @@ async function uploadFileToGCS(file) {
       reject(err);
     });
 
-    blobStream.on("finish", () => {
-      const mediaUrl = `https://storage.googleapis.com/${process.env.GCS_BUCKET_NAME}/${blob.name}`;
-      resolve(mediaUrl);
+    blobStream.on("finish", async () => {
+      try {
+        const publicUrl = `https://storage.googleapis.com/${process.env.GCS_BUCKET_NAME}/${fileName}`;
+        resolve(publicUrl);
+      } catch (error) {
+        console.error("Error generating public URL:", error);
+        reject(error);
+      }
     });
 
-    blobStream.end(file.buffer);
+    try {
+      blobStream.end(file.buffer);
+    } catch (error) {
+      console.error("Error ending blob stream:", error);
+      reject(error);
+    }
   });
 }
 

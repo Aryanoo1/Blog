@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import SideBar from "../components/SideBar";
 import Search from "../components/Search";
 
@@ -8,6 +8,8 @@ const LayoutWithVideoBackground = ({
   setSelectedTab,
   setFilteredUsers,
 }) => {
+  const [collapsed, setCollapsed] = useState(true);
+
   return (
     <div
       style={{
@@ -36,40 +38,38 @@ const LayoutWithVideoBackground = ({
       </video>
 
       <div style={{ display: "flex", height: "100%" }}>
-=        <div
-          style={{
-            width: "uto",
-            position: "fixed",
-            top: 0,
-            left: 0,
-            height: "100%",
-            backgroundColor: "rgba(0, 0, 0, 0.6)",
-            zIndex: 1,
-          }}
-        >
-          <SideBar selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
-        </div>
+        {/* Sidebar */}
+        <SideBar
+          selectedTab={selectedTab}
+          setSelectedTab={setSelectedTab}
+          isCollapsed={collapsed} 
+          setIsCollapsed={setCollapsed}
+        />
+
+        {/* Main content */}
         <div
           style={{
             flexGrow: 1,
-            marginLeft: "auto",
+            marginLeft: collapsed ? "0" : "0", // Adjust margin based on collapse state
             display: "flex",
             flexDirection: "column",
             height: "100%",
-            zIndex: "0"
+            zIndex: 0,
+            transition: "margin-left 0.3s ease", // Smooth transition when sidebar collapses/expands
           }}
         >
+          {/* Search bar at the top */}
           <div
             style={{
               position: "relative",
               top: 0,
-              height: "60px",
-              backgroundColor: "rgba(255, 255, 255, 0)",
+              width: "100%",
+              backgroundColor: "rgba(255, 255, 255, 0.3)",
               zIndex: 2,
               display: "flex",
-              flexDirection: "column",
+              justifyContent: "center",
               alignItems: "center",
-              padding: "0 20px",
+              padding: "10px 20px",
             }}
           >
             <Search
@@ -79,9 +79,10 @@ const LayoutWithVideoBackground = ({
             />
           </div>
 
+          {/* Main content area */}
           <div
             style={{
-              marginTop: "30px",
+              flexGrow: 1,
               padding: "20px",
               overflowY: "auto",
               height: "calc(100vh - 60px)",
