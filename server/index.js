@@ -24,7 +24,7 @@ app.use(
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://blog-client-mu-amber.vercel.app",
+    origin: "http://localhost:5173",
     credentials: true,
     methods: ["GET", "POST", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
@@ -32,8 +32,6 @@ app.use(
     optionsSuccessStatus: 204,
   })
 );
-
-// app.options("*", cors());
 
 app.use(
   session({

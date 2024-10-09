@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import Cookies from "js-cookie";
 import blogLogo from "../assets/blogLogo.png";
-import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai"; // Icons for the arrows
+import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 
 const SideBar = ({
   selectedTab,
@@ -32,19 +32,18 @@ const SideBar = ({
 
   return (
     <div
-      className={`d-flex flex-column flex-shrink-0 p-3 sidebar ${
-        isCollapsed ? "collapsed" : ""
+      className={`d-flex flex-column flex-shrink-0 p-3 ${
+        isCollapsed ? "collapsed" : "sidebar"
       }`}
       style={{
         minHeight: "100vh",
         width: isCollapsed ? "80px" : "auto",
         transition: "width 0.3s",
-        overflowY: "auto", // Allow vertical scrolling if necessary
-        overflowX: "hidden", // Prevent horizontal scrolling
+        overflowY: "auto",
+        overflowX: "hidden",
         position: "relative",
       }}
     >
-      {/* Sidebar Header */}
       <div className="d-flex justify-content-between align-items-center mb-3">
         {!isCollapsed && (
           <a
@@ -73,7 +72,6 @@ const SideBar = ({
         </button>
       </div>
 
-      {/* Sidebar Content */}
       {!isCollapsed && (
         <>
           <hr />
@@ -132,12 +130,11 @@ const SideBar = ({
         </>
       )}
 
-      {/* Sidebar Footer (Dropdown) */}
       <div
         className="dropdown"
         style={{
           position: "absolute",
-          bottom: "20px", // Ensure it stays at the bottom
+          bottom: "20px",
           width: "100%",
         }}
       >

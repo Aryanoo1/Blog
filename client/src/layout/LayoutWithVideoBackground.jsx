@@ -46,25 +46,23 @@ const LayoutWithVideoBackground = ({
           setIsCollapsed={setCollapsed}
         />
 
-        {/* Main content */}
         <div
           style={{
             flexGrow: 1,
-            marginLeft: collapsed ? "0" : "0", // Adjust margin based on collapse state
+            marginLeft: collapsed ? "0" : "0",
             display: "flex",
             flexDirection: "column",
             height: "100%",
             zIndex: 0,
-            transition: "margin-left 0.3s ease", // Smooth transition when sidebar collapses/expands
+            transition: "margin-left 0.3s ease",
           }}
         >
-          {/* Search bar at the top */}
           <div
             style={{
               position: "relative",
               top: 0,
               width: "100%",
-              backgroundColor: "rgba(255, 255, 255, 0.3)",
+              backgroundColor: "rgba(255, 255, 255, 0)",
               zIndex: 2,
               display: "flex",
               justifyContent: "center",
@@ -79,7 +77,6 @@ const LayoutWithVideoBackground = ({
             />
           </div>
 
-          {/* Main content area */}
           <div
             style={{
               flexGrow: 1,
